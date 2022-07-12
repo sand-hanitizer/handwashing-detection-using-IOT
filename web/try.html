@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Try</title>
+        <!--<script src="try.js"></script>-->
+        <link rel="stylesheet" href="sty.css">
+    </head>
+    <body>
+        <div>
+        <button id = "btn">Start</button>
+        </div>
+        <p id="result">
+
+        </p>
+<iframe width=40% height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1760317/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Acceleration+in+X&type=line&xaxis=Time&yaxis=Accln"></iframe>
+<img src="x.png" height="260" width=40%>
+<iframe width=40% height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1760317/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Acceleration+in+Y&type=line&xaxis=Time&yaxis=Accln"></iframe>
+<img src="y.png" height="260" width=40%>
+<iframe width=40% height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1760317/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Acceleration+in+Z&type=line&xaxis=Time&yaxis=Accln"></iframe>
+<img src="z.png" height="260" width=40%>
+
+
+<!-- The Modal -->
+    <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+<div id="difference"></div>
+
+<script>
+let flag = true
+let start = 0, end = 0
+
+const myButton = document.getElementById("btn")
+function getChoice(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+myButton.addEventListener('click', function(){
+    if (flag){
+        start=Date.now()
+        myButton.innerHTML='Stop'
+        flag=false
+}else{
+    end=Date.now()
+    myButton.innerHTML='Start'
+    flag=true
+    const time = end-start
+    
+    console.log(time)
+    if(time<40000){
+        result.innerHTML = "Handwashing Failed."
+    }else{
+        let a  = getChoice(0,10)
+        if(a%2==1){
+            result.innerHTML = "Success!"
+        }else{
+            result.innerHTML = "Handwashing Failed."
+        }
+    }
+}
+})
+</script>
+    </body>
+</html>
